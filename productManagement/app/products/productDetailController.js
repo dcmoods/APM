@@ -6,13 +6,15 @@
 
     angular.module('productManagement')
         .controller('ProductDetailController',
-                    ['product', ProductDetailController]);
+                    ['product', 'productService', ProductDetailController]);
 
-    function ProductDetailController(product){
+    function ProductDetailController(product, productService){
         var vm = this;
         vm.product = product;
 
         vm.title = 'product Detail: ' + vm.product.productName;
+
+        vm.marginPercent = productService.calculateMarginPercent(vm.product.price, vm.product.cost);
 
         if(vm.product.tags){
             vm.product.tagList = vm.product.tags.toString();
