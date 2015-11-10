@@ -16,11 +16,12 @@
         $scope.title = 'Price Analytics';
 
         for(var i = 0; i , products.length; i++){
-
+            
             products[i].marginPercent = productService.calculatePercent(products[i].price, products[i].cost);
 
             products[i].marginAmount = productService.calculateAmount(products[i].price, products[i].cost);
         }
+
 
         var orderedProductsAmount = $filter('orderBy')(products, 'marginAmount');
         var filteredProductsAmount = $filter('limitTo')(orderedProductsAmount, 5);
